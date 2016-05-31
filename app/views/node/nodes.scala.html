@@ -1,0 +1,15 @@
+@(allNodes:Seq[Node])
+
+@content = {
+  <div>
+    @for(node <- allNodes) {
+      <span>@node.id</span>
+    }
+  </div>
+}
+
+@js = {
+
+}
+
+@tpl.template("节点列表", "node")(content)(js)

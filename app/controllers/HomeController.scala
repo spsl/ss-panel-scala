@@ -1,27 +1,38 @@
 package controllers
 
 import javax.inject._
-import play.api._
+import dao.CatDAO
+import models.{Cat, CommonResult}
 import play.api.mvc._
+import scala.concurrent.ExecutionContext.Implicits.global
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
+import play.api.libs.json._
+
+
 @Singleton
-class HomeController @Inject() extends Controller {
+class HomeController @Inject() (catDao:CatDAO) extends Controller {
 
 
-  def index = Action {
+  implicit val format = Json.format[Cat]
 
-    val a : Int = 10
-    println(a)
+  def index2(name: String) = Action.async { implicit request =>
+    catDao.findByName(name).map {case cat =>
+      Ok(Json.toJson(cat.get))}
+  }
 
-    Ok(views.html.index)
+  def index() = Action {
+    Ok(views.html.index())
+  }
+
+
+  def hello = Action { implicit  request =>
+    Redirect(routes.HomeController.index())
   }
 
   def home = Action {
     Ok("hello_world")
+      .withCookies(Cookie("sunsai", "43232"))
+      .discardingCookies(DiscardingCookie("ssss"))
   }
 
 }

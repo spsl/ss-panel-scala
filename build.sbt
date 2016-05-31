@@ -10,7 +10,8 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
+  "mysql" % "mysql-connector-java" % "5.1.35",
+  "com.typesafe.play" %% "play-slick" % "2.0.0"
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"

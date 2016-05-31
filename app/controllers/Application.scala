@@ -6,11 +6,11 @@ import play.api.mvc.Action
 import play.api.mvc.Controller
 
 /**
-  * Created by sunsai on 2016/4/25 - 13:27.
+  * Created by spsl on 2016/4/25 - 13:27.
   */
-class Application @Inject() extends Controller{
+class Application @Inject() extends Controller {
 
   def login = Action {
-    Ok(views.html.login)
+    Ok(views.html.login.render())
   }
 }
