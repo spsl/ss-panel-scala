@@ -19,8 +19,14 @@ class NodeDao @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)
 
   private val Nodes = TableQuery[NodeTable]
 
-  def all():Future[Seq[Node]] = {
+  def all(pageSize:Int, pageIndex:Int):Future[Seq[Node]] = {
     db.run(Nodes.result)
+  }
+
+
+  def list( pageIndex:Int, pageSize:Int):Future[Seq[Node]] = {
+    val offset = pageIndex * pageSize
+    db.run(Nodes.sortBy(x => x.sort desc).drop(offset).take(pageSize).result)
   }
 
   def findById(id:Int):Future[Option[Node]] = {

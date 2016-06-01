@@ -1,4 +1,4 @@
-@(title:String = "title", nav : String = "home")(content:Html)(js:Html)
+@(title:String = "title", nav : String = "Home")(content:Html)(js:Html)
 
 <!DOCTYPE html>
 <html data-ng-app="materialAdmin" data-ng-controller="materialadminCtrl as mactrl">
@@ -33,7 +33,7 @@
     <section id="main">
 
       <aside id="sidebar"  data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }">
-        @tpl.sidebar()
+        @tpl.sidebar(nav)
       </aside>
 
       <aside id="chat" data-ng-class="{ 'toggled': mactrl.sidebarToggle.right === true }">

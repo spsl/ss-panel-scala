@@ -12,9 +12,10 @@ GET     /home                       controllers.HomeController.home
 GET     /login                      controllers.Application.login
 
 
-
-GET     /nodes                      controllers.NodeController.index()
-GET     /nodes/add/:name            controllers.NodeController.add(name:String)
+# 节点相关
+GET     /node                      controllers.NodeController.index(pageIndex:Int ?= 0, pageSize:Int ?= 50)
+GET     /node/add                  controllers.NodeController.add()
+POST    /node/save                 controllers.NodeController.save()
 
 
 

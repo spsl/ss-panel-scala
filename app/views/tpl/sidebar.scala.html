@@ -1,6 +1,5 @@
 @(currMenu:String = "Home")
 
-
 <div class="sidebar-inner c-overflow">
   <div class="profile-menu">
     <a href="" toggle-submenu>
@@ -32,11 +31,11 @@
   </div>
 
   <ul class="main-menu">
-    <li  data-ui-sref-active=" " class=" toggled">
-      <a href="#"><i class="zmdi zmdi-home"></i> Home</a>
+    <li  data-ui-sref-active=" " class="@if(currMenu.equals("Home")) {active} else {toggled}" >
+      <a href="/"><i class="zmdi zmdi-home"></i> Home</a>
     </li>
-    <li data-ui-sref-active=" " class=" toggled">
-      <a href="#"><i class="zmdi zmdi-home"></i> 节点列表</a>
+    <li data-ui-sref-active=" " class="@if(currMenu.equals("Node")) {active} else {toggled}">
+      <a href="/node"><i class="zmdi zmdi-home"></i> 节点列表</a>
     </li>
 
 
